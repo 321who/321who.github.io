@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>桌面上的ChatGPT</title>
+    <title>321who的博客</title>
     <style>
         body, html {
             margin: 0;
@@ -115,16 +115,78 @@
         .dot.active {
             background-color: white;
         }
+        .card-section {
+            padding: 60px 40px;
+            background-color:#FFE4B5;
+            overflow: hidden;
+        }
+        .card-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding-left: 80px;
+        }
+        .card-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .card-wrapper {
+            display: flex;
+            gap: 40px;
+            overflow-x: scroll;
+            padding-bottom: 40px;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .card-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .card {
+            flex: 0 0 400px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        .scroll-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+        .scroll-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin-left: 20px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .scroll-button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="logo"></div>
         <nav class="nav">
-            <a href="#">研究</a>
-            <a href="#">产品</a>
-            <a href="#">安全</a>
-            <a href="#">公司</a>
+            <a href="#">首页</a>
+            <a href="#">文章</a>
+            <a href="#">项目教程</a>
+            <a href="#">321who</a>
         </nav>
         <div class="search-icon"></div>
     </header>
@@ -133,28 +195,53 @@
             <div class="slide active">
                 <h1>欢迎来的我的博客</h1>
                 <p>在这里分享一些有趣的AI项目和项目试用。</p>
-                <a href="#" class="cta-button">了解更多信息</a>
+                
             </div>
             <div class="slide">
-                <h1>智能助手</h1>
-                <p>24/7为您提供帮助，解答各种问题。</p>
+                <h1>ChatGPT</h1>
+                <p>这里提供试用</p>
                 <a href="#" class="cta-button">立即体验</a>
             </div>
             <div class="slide">
-                <h1>提高效率</h1>
-                <p>让AI成为您的得力助手，提升工作效率。</p>
-                <a href="#" class="cta-button">开始使用</a>
+                <h1>分享</h1>
+                <p>这里会有很多不同类型的文章，不仅关于技术方面的</p>
+                
             </div>
             <div class="slide">
-                <h1>未来就在眼前</h1>
-                <p>探索AI带来的无限可能。</p>
-                <a href="#" class="cta-button">了解更多</a>
+                <h1>敬请期待</h1>
+                <p>还没想好加什么版块~</p>
+                <a href="#" class="cta-button">贡献想法</a>
             </div>
             <div class="dots">
                 <div class="dot active"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-section">
+        <div class="card-container">
+            <h2 class="card-title">AI 画廊</h2>
+            <div class="card-wrapper">
+                <div class="card">
+                    <img src="C:\Users\Pictures\_20240129171058.jpg" alt="AI App 1">
+                </div>
+                <div class="card">
+                    <img src="C:\Users\Pictures\1722410867851178.png" alt="AI App 2">
+                </div>
+                <div class="card">
+                    <img src="C:\Users\Pictures\1722411322875541.png" alt="AI App 3">
+                </div>
+                <div class="card">
+                    <img src="C:\Users\Pictures\下载.jpg" alt="AI App 4">
+                </div>
+                <!-- 可以添加更多卡片 -->
+            </div>
+            <div class="scroll-buttons">
+                <button class="scroll-button" onclick="scrollCards('left')">←</button>
+                <button class="scroll-button" onclick="scrollCards('right')">→</button>
             </div>
         </div>
     </div>
@@ -194,14 +281,33 @@
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 changeSlide(index);
-                resetSlideTimer(); // 重置计时器
+                resetSlideTimer();
             });
         });
 
         heroContainer.style.backgroundColor = colors[currentColorIndex];
 
         setInterval(changeBackgroundColor, 3000);
-        resetSlideTimer(); // 初始化幻灯片计时器
+        resetSlideTimer();
+
+              function scrollCards(direction) {
+            const wrapper = document.querySelector('.card-wrapper');
+            const cardWidth = wrapper.querySelector('.card').offsetWidth;
+            const gap = 40; // 卡片之间的间距
+            const scrollAmount = cardWidth + gap;
+
+            if (direction === 'left') {
+                wrapper.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                wrapper.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
     </script>
 </body>
 </html>
